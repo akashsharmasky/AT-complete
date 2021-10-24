@@ -1,0 +1,14 @@
+- hosts: all
+  tasks:
+    - name: install vsftpd
+      yum:
+        name: ftp
+        state: installed
+      tags: [never, alpha]
+
+
+    - name: install httpd
+      yum:
+         name: telnet
+         state: installed
+      tags: [never,beta]

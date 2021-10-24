@@ -1,0 +1,10 @@
+- hosts: localhost
+  vars_files: file_list.yml
+  tasks:
+        - name: grep IP
+          command: "grep -ir ipv4 server.txt"
+          register: IP
+
+        - debug:
+               var: IP
+

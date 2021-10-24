@@ -1,0 +1,8 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: grep ip and redirect to file.
+      command: grep -i ip ./files/my.file > ip _akash.txt
+      command: grep -i ip ./files/my.file.2 > ip2_akash.txt
+
+        

@@ -1,0 +1,7 @@
+- hosts: localhost
+  tasks: 
+    - name: Add a user named sharma on localhost Server
+      user:
+        name: sharma
+        state: present
+        comment:  Test User

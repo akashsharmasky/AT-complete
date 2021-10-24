@@ -1,0 +1,11 @@
+- name: working with lookups
+  hosts: localhost
+  # become: yes
+  tasks:
+ 
+  - name: Prints the first line of some files
+    debug:
+      msg: "{{ item }}"
+    loop:
+    - "{{ lookup('lines', 'cat files/my.file |grep ip > ip.txt') }}"
+    - "{{ lookup('lines', 'cat files/my.file.2 |grep ip > ip2.txt') }}"

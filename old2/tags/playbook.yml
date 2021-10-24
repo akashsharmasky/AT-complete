@@ -1,0 +1,27 @@
+- hosts: server1
+  tasks:
+    - name: install vsftpd
+      yum:
+        name: vsftpd
+        state: installed
+      tags:  [ never, alpha]
+
+
+    - name: install httpd
+      yum:
+        name: httpd
+        state: installed 
+      tags: [never, beta]
+
+
+        #    - name: remove httpd
+        # yum:
+        #name: httpd
+        #state: removed
+        #    tags:  [never, httpd]
+
+        # - name: remove ftp
+        #yum:
+        # name: vsftpd
+        # state: absent
+        # tags: [never, ftp]

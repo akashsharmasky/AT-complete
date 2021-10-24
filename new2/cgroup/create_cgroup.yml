@@ -1,0 +1,5 @@
+- hosts: localhost
+  become: true
+  gather_facts: true
+  tasks:
+          - raw: cgcreate -a akash:akash -t akash:akash -g cpuacct,memory,pids:ex447_stats

@@ -1,0 +1,16 @@
+- hosts: all
+  become: true
+  tasks:
+   - copy:
+        content: "hello world Today is 22oct"
+        dest: /tmp/abc.txt
+     notify: restart_httpd
+
+  handlers: 
+    - name: restart_httpd
+      service: 
+        name: httpd
+        state: restarted
+        enabled: yes
+
+

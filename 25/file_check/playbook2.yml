@@ -1,0 +1,22 @@
+- hosts: localhost
+  become: true
+  vars_files: files_list_old.yml
+  tasks:
+    - name: Check current checksum
+      stat: 
+        path: "{{item.name}}"
+      loop: "{{files}}"
+      register: exam
+
+    - debug:
+        var: exam
+   
+    - debug: 
+        msg: "check sum correct"
+      when: '"{{item.item.checksum}}" == "{{item.stat.checksum}}"'
+      loop: "{{exam.results}}"
+
+    - debug:
+        msg: "checksum not match"
+      when: '"{{item.item.checksum}}" != "{{item.stat.checksum}}"'
+      loop: "{{exam.results}}"

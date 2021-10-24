@@ -1,0 +1,19 @@
+- name: Playbook variable example
+  hosts: server1
+  vars:
+    web_pkg: httpd
+    webroot: /bvar/www/html/test
+
+  tasks:
+    - name: Restart "{{web_pkg}}"
+      service: 
+        name: "{{web_pkg}}"
+        state: restarted
+
+    - name: Create Deployment path "{{webroot}}"
+      file: 
+        path: "{{webroot}}"
+        state: directory
+
+
+

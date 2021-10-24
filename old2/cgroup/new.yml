@@ -1,0 +1,10 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: create user yamika on localserver
+      user:
+        name: yamika
+        state: present
+        group: akash
+        uid: 1999
+

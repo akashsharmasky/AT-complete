@@ -1,0 +1,17 @@
+[web]
+server1
+
+[dev]
+server2
+
+[prod:children]
+web
+dev
+
+#[web:vars]
+#ansible_ssh_user=admin 
+#ansible_ssh_pass=redhat
+
+#[dev:vars]
+#ansible_ssh_user=node2 
+#ansible_ssh_pass=password

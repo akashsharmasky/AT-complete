@@ -1,0 +1,12 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: group add  
+      group: 
+        name: ibm
+        state: present
+
+    - name: add user harry
+      user: 
+        name: harry
+        state: present

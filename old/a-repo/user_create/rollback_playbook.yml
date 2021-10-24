@@ -1,0 +1,19 @@
+- name: creating users with random password
+  hosts: all
+  become: yes
+  vars_files:
+  - users.yml
+  vars:
+  # - password: "{{ lookup('password', 'credentials/' '/mysqlpassword length=15') }}"
+  - password:  "{{ lookup('password', '' + './{{ item.name }}-password.txt length=6') }}"
+  tasks:
+
+    - name: create users
+      user:
+        name: "{{ item.name }}"
+        comment: "{{ item.first }} {{ item.last }}"
+        password: "{{ password | password_hash('sha512') }}"
+        update_password: on_create
+        state: absent
+        remove: yes
+      loop: "{{ myusers }}"

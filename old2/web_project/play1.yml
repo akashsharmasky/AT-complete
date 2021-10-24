@@ -1,0 +1,21 @@
+ - hosts: all
+   become: true
+   tasks:
+
+     - name: Remove Apache
+       yum: 
+         name: httpd
+         state: absent
+
+     - name:  Install Apache
+       yum:              
+         name: httpd
+         state: present
+
+
+     - name: create a test file
+       copy:
+         content: "Apache has been installed from Tower"
+         dest: /tmp/apache_tower.txt
+          
+

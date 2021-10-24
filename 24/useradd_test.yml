@@ -1,0 +1,12 @@
+- hosts: server1
+  become: true
+  tasks:
+    - name: add multiple user
+      user: 
+        name: "{{item}}"
+        state: present
+      with_items:
+              - manoj
+              - manmohan
+              - jatin
+

@@ -1,0 +1,4 @@
+- hosts: localhost
+  become: true
+  tasks:
+          - command: cgcreate -a test_cgroup2:test_cgroup2 -t test_cgroup2:test_cgroup2 -g cpuacct,memory,pids:ex447_stats_test123

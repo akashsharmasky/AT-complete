@@ -1,0 +1,24 @@
+- hosts: localhost
+  gather_facts: false
+  vars_files: file_list.yml
+  become: yes
+
+  tasks:
+          #- debug:
+          #
+          #
+          #      msg: "{{item.ipv4}}"
+
+          #  - name: We could read the file directly, but this shows output from command
+          # debug: 
+          #msg: "{{ item }} is an output line from running cat on /etc/motd"
+          #      with_lines: cat file_list.yml
+          #
+      - name: Print the first line of some files
+        debug:
+          msg: "{{item}}"
+        loop:
+                - "{{lookup ('lines', 'cat {{files}} | grep ip > ./dataip}}"
+
+
+

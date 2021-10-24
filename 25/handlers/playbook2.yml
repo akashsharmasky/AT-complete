@@ -1,0 +1,17 @@
+- hosts: all
+  become: true
+  tasks:
+          - name: change in file
+            copy: 
+              content: "chaning for apache restart"
+              dest: /etc/motd
+            notify: restart_httpd
+
+  handlers:
+    - name: restart_httpd
+      service: 
+        name: httpd
+        state: restarted
+        enabled: yes
+
+

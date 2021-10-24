@@ -1,0 +1,11 @@
+ - hosts: localhost
+   become: true
+   tasks:
+           - name:
+             user:
+                     name: cgroup_user
+                     state: present
+                     group: admin
+                     uid: 2021
+
+

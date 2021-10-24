@@ -1,0 +1,15 @@
+- hosts: all
+  become: true
+  tasks:
+   - copy:
+        content: "hello world new"
+        dest: /tmp/abcd.txt
+     notify: restart_apache
+
+     handlers:
+       - name: restart_apache
+         service:
+           name: httpd
+           state: restarted
+           enabled: yes
+

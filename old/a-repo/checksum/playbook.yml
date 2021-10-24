@@ -1,0 +1,32 @@
+- name: deploying checksum
+  hosts: localhost
+  become: yes
+  vars_files:
+  - files_list.yml
+  tasks:
+  - name: check current checksum
+    stat:
+      path: "{{ item.name }}"
+      checksum_algorithm: md5
+    loop: "{{ files }}"
+    register: test
+
+  - name: capturing output
+    debug:
+      var: test
+
+  - name: matching checksum
+    debug:
+      msg: "checksum matched"
+    when: "item.stat.checksum == item.item.checksum"
+    loop: "{{ test.results }}"
+    loop_control:
+      label: "{{ item.stat.path }}"
+
+  - name: if checksum is not matched 
+    debug:
+      msg: "checksum not matched"
+    when: "item.stat.checksum != item.item.checksum"
+    loop: "{{ test.results }}"
+    loop_control:
+      label: "{{ item.stat.path }}"

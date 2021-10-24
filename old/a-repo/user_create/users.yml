@@ -1,0 +1,10 @@
+myusers:
+  - name: ravi
+    last: modpatel
+    first: ravi
+    uid: 10035
+  - name: shyam
+    last: n
+    first: shyam
+    uid: 10036
+  

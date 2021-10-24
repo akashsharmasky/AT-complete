@@ -1,0 +1,16 @@
+- hosts: all
+  become: true
+  vars_files: user_list.yml
+  tasks:
+    - name: create user
+      vars:
+        - password: "{{ lookup('password', './{{item.name}}-password.txt length=6') }}"
+
+      user:
+        name: "{{item.name}}" 
+        uid: "{{item.uid}}"
+        comment: "{{item.first | capitalize}} {{item.middle | capitalize}} {{item.last | capitalize}}"
+        password: "{{password | password_hash ('sha512')}}"
+        update_password: on_create
+        state: present
+      loop: "{{users}}"

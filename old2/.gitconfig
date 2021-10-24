@@ -1,0 +1,7 @@
+[user]
+	name = mac
+	email = mac@example.com
+
+[push]
+	default = simple
+

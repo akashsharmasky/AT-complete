@@ -1,0 +1,15 @@
+- hosts: server1
+  tasks:
+    - name: Create a file
+      copy:
+              content: "This is the file to check notify and handlers"
+              dest: /tmp/handlers
+      notify: restart_httpd
+
+  handlers:
+    - name: restart_httpd
+      service:
+              name: httpd
+              state: restarted
+              enabled: yes 
+

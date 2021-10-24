@@ -1,0 +1,18 @@
+- hosts: all
+  become: true
+  tasks:
+
+          - name: creating a file with content
+            copy: 
+              content: "apache conf file for website"
+              dest: /tmp/deploy.txt
+            notify: restart_httpd
+
+  handlers:
+          - name: restart_httpd
+            service: 
+               name: httpd
+               state: restarted
+               enabled: yes
+
+

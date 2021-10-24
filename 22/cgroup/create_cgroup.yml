@@ -1,0 +1,4 @@
+- hosts: localhost
+  become: yes
+  tasks:
+          - raw: sudo cgcreate -a matthew:matthew -t matthew:matthew -g cpuacct,memory,pids:ex447_stats_exam

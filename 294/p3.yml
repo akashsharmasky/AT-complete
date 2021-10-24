@@ -1,0 +1,17 @@
+- name: Example of rgister variable
+  hosts: all
+  gather_facts: false
+  tasks:
+          - name: check hw mode
+            command: uname -m
+            register: xyz
+
+
+          - debug:
+              var: xyz.stdout     
+
+
+          - name: store HW mode into /etc/motd
+            lineinfile:
+                    line: "Your Server HW mode is {{xyz.stdout_lines}}"
+                    dest: /etc/motd

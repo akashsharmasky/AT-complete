@@ -1,0 +1,22 @@
+ - hosts: all
+   become: true
+   tasks: 
+     - name: File change
+       copy:
+               content: "This is a new file"
+               dest: /etc/motd
+       notify: restart_httpd
+
+     - name: start httpd
+       service:
+               name: httpd
+               state: started
+               enabled: yes
+
+
+   handlers: 
+     - name: restart_httpd
+       service: 
+         name: httpd
+         state: restarted
+         enabled: yes

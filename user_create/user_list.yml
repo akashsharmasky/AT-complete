@@ -1,0 +1,15 @@
+users:
+  - name:  ravi
+    first:  ravi
+    last:  kumar
+    uid: 1010
+
+  - name:  shyam
+    first: shyam
+    last:  kumar
+    uid: 1011
+
+  - name: yamika
+    first: yamika
+    last: sharma
+    uid: 1012

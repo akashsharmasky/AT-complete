@@ -1,0 +1,25 @@
+---
+- hosts: server2
+  tasks:
+  - name: first file check
+    stat:
+      path: /tmp/akash.txt
+      get_checksum: yes
+    register: test_file_check_1
+...
+
+---    
+- hosts: server1
+  tasks:
+  - name: next check
+    stat:
+      path: /tmp/akash.txt
+      get_checksum: yes
+    register: test_file_check_2
+    
+  tasks:
+  - name: Block run only if file has no changes
+    command: /bin/true
+    when: '"test_file_check_1.stat.checksum == test_file_check_2.stat.checksum"'
+    
+...

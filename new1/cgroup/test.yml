@@ -1,0 +1,11 @@
+- hosts: localhost
+  become: true
+  gather_facts: false
+  tasks:
+    - name: testing for cgroup
+      command: df -hT
+      register: test
+
+    - debug:
+        var: test
+

@@ -1,0 +1,24 @@
+- hosts: all
+  become: true
+  tasks:
+    - user:
+        name: shyam
+        state: present
+        group: wheel
+      notify : restart_http
+      tags: [never,alpha]
+
+
+    - name: check goole reachable or not
+      uri:
+        url: https://google.com
+        debug:
+          msg: "Google curl output"
+      tags: [never,gama]
+
+  handlers: 
+    - name: restart_http
+      service:
+        name: httpd
+        state: restarted
+        enabled: yes

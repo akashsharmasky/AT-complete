@@ -1,0 +1,19 @@
+- name: example of condition
+  hosts: all
+  tasks:
+          - name: check Service status
+            command: systemctl status crond
+            register: exam
+            ignore_errors: yes   
+
+
+          - debug:
+                  var: exam.active
+          
+          - name: Start Service if it's not running
+            service:
+                    name: crond
+                    state: started
+            when : exam. == inactive
+            ignore_errors: yes
+          

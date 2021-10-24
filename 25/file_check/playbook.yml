@@ -1,0 +1,13 @@
+- hosts: localhost
+  vars_files:
+   - files_list.yml
+  tasks:
+   - name: check file checksum
+     stat:
+         path: "{{ item.name }}"
+     with_items:
+      - "{{ files }}"
+     register: xyz
+
+   - debug:
+        var: xyz

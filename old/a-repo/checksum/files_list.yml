@@ -1,0 +1,7 @@
+files:
+  - name: /home/devops/checksum/abc1.txt 
+    checksum: d41d8cd98f00b204e9800998ecf8427e
+  - name: /home/devops/checksum/abc2.txt 
+    checksum: d41d8cd98f00b204e9800998ecf8427e
+  - name: /home/devops/checksum/abc3.txt 
+    checksum: d41d8cd98f00b204e9800998ecf8427e

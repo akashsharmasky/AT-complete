@@ -1,0 +1,22 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: remove vsftpd and httpd package
+      yum:
+              name: 
+                - vsftpd
+                - httpd
+              state: absent
+
+    - name: install vsftpd
+      yum:
+        name: vsftpd
+        state: installed
+      tags: [never, alpha]
+
+
+    - name: install httpd
+      yum:
+         name: httpd
+         state: installed
+      tags: [never, beta] 

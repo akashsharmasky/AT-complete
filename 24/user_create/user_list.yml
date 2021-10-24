@@ -1,0 +1,15 @@
+users:
+  - name: chinu12345
+    first: chinu
+    middle: xyz
+    last: sharma
+    uid: 10099
+
+  - name: akku12345
+    first: akku
+    middle: test
+    last: shar
+    uid: 10100
+
+
+    

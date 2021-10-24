@@ -1,0 +1,8 @@
+- name: Create a test file for chksum
+  hosts:
+    -  server1
+    -  server2 
+  tasks:
+  - copy: 
+      content: "This is a test file\n"
+      dest: /tmp/akash.txt

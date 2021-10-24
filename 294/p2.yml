@@ -1,0 +1,16 @@
+- name: Example of Prompt Variable
+  hosts: all
+  vars_prompt:
+          - name: username
+            prompt: Please enter User Name.
+            private: no
+          - name: pw
+            prompt: "Please give the password."
+            private: yes
+
+  tasks:
+          - name: Add user and password which prompt by user
+            user:
+                    name: "{{username}}" 
+                    state: present
+                    password: "{{pw|password_hash('sha512')}}"

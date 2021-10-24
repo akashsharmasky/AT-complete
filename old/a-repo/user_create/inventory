@@ -1,0 +1,8 @@
+[web]
+node1
+server1
+
+[db]
+node2
+server2
+
